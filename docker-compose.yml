@@ -129,6 +129,11 @@ services:
     depends_on:
       - db
 
+  node_exporter:
+    image: quay.io/prometheus/node-exporter:latest
+    ports:
+      - "9100:9100"
+
   prometheus:
     image: prom/prometheus
     ports:
