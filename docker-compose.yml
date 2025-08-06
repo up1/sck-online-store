@@ -51,8 +51,8 @@ services:
       - ./tearup/point/init.sql:/docker-entrypoint-initdb.d/point.sql
       - ./tearup/store/init.sql:/docker-entrypoint-initdb.d/store.sql
       - ./tearup/grandall.sql:/docker-entrypoint-initdb.d/grandall.sql
-    ports:
-      - "3306:3306"
+    # ports:
+      # - "3306:3306"
     restart: always
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
@@ -67,9 +67,9 @@ services:
       context: thirdparty/
     container_name: thirdparty
     restart: always
-    ports:
-      - "8882:8882"
-      - "8883:8883"
+    # ports:
+    #   - "8882:8882"
+    #   - "8883:8883"
 
   store-web:
     image: store-web:0.1.0
@@ -122,8 +122,8 @@ services:
 
   mysql-exporter:
     image: prom/mysqld-exporter
-    ports:
-      - "9104:9104"
+    # ports:
+    #   - "9104:9104"
     volumes:
       - ./monitoring/database/.my.cnf:/.my.cnf
     depends_on:
